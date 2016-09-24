@@ -1,0 +1,113 @@
+
+/**
+ * Animate stripe in from right to left.
+ */
+@include keyframes(stripe-in-left) {
+  0% {
+		width: 0%;
+		left: 105%
+	}
+  100% {
+    width: 120%;
+		left: -5%
+  }
+}
+
+
+/**
+ * Animate stripe in from left to right.
+ */
+@include keyframes(stripe-in-right) {
+  0% {
+		width: 0%;
+	}
+  100% {
+    width: 120%;
+  }
+}
+
+
+/**
+ * Animate stripe out from right to left.
+ */
+@include keyframes(stripe-out-left) {
+  0% {
+    width: 120%;
+		left: -5%;
+	}
+  100% {
+		width: 0%;
+		left: 105%;
+  }
+}
+
+
+/**
+ * Animate stripe in from left to right.
+ */
+@include keyframes(stripe-out-right) {
+  0% {
+    width: 120%;
+	}
+  100% {
+		width: 0%;
+  }
+}
+
+
+$stripes: 5;
+$stripe-animation-delay: 0.2;
+
+// Container for overlay.
+.stripe-bg {
+	position: fixed;
+	overflow: hidden;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+    z-index: 999;
+
+	// Loop to style stripes.
+	@for $i from 0 through $stripes {
+		&__stripe-#{$i} {
+			position: absolute;
+			left: -5%;
+			top: calc(-5% + (25% * #{$i}));
+			background: black;
+			width: 0%;
+			height: 35%;
+			transform: rotate(2deg);
+		}
+	}
+
+}
+
+// Open state.
+.nav-open .stripe-bg {
+	@for $i from 0 through $stripes {
+		&__stripe-#{$i} {
+			@if $i % 2 == 0 {
+				@include animation(#{$i * $stripe-animation-delay}s, #{$stripe-animation-delay}s, stripe-in-right);
+			} @else {
+				@include animation(#{$i * $stripe-animation-delay}s, #{$stripe-animation-delay}s, stripe-in-left);
+			}
+		}
+	}
+}
+
+// Closed state.
+.nav-closed .stripe-bg {
+	@for $i from 0 through $stripes {
+		&__stripe-#{$i} {
+			@if $i % 2 == 0 {
+		    width: 120%;
+				@include animation(#{$i * $stripe-animation-delay}s, #{$stripe-animation-delay}s, stripe-out-right);
+			} @else {
+				width: 120%;
+				left: -5%;
+				@include animation(#{$i * $stripe-animation-delay}s, #{$stripe-animation-delay}s, stripe-out-left);
+			}
+		}
+	}
+}

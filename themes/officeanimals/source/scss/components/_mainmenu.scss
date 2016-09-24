@@ -1,0 +1,60 @@
+$menu-base-font-size: 3rem;
+$menu-variable-font-size: 1.1, 0.9, 1.05, 1, 0.95;
+$menu-variable-font-rotation: 5deg, -1deg, 2deg, 7deg, -3deg, 0deg;
+$menu-itemcount: 5;
+
+.mainmenu {
+    position: fixed;
+    z-index: 1001;
+    color: white;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    ul {
+        list-style-type: none;
+        text-align: center;
+        width: 100%;
+        li {
+            font-family: 'Neucha', cursive;
+            // font-size: 3rem;
+            line-height: 4rem;
+			opacity: 0;
+            a {
+                text-decoration: none;
+                color: white;
+            }
+        }
+
+		// Varialbe size and rotation.
+        @for $i from 1 through $menu-itemcount {
+    		li:nth-child(#{$i}) {
+                font-size: 3rem * nth($menu-variable-font-size, $i);
+                transform: rotate(nth($menu-variable-font-rotation, $i));
+    		}
+    	}
+
+
+    }
+}
+
+body.nav-open .mainmenu {
+    display: block;
+	ul {
+		@for $i from 1 through $menu-itemcount {
+    		li:nth-child(#{$i}) {
+				@include animation(#{0.4 + $i * 0.15}s, 0.2s, mainmenu-in-#{$i});
+    		}
+    	}
+	}
+}
+
+body.nav-closed .mainmenu {
+    display: none;
+}
+
+@for $i from 1 through $menu-itemcount {
+	@include keyframes(mainmenu-in-#{$i}) {
+		0% 		{ transform: scale(5) rotate(0); opacity: 0; }
+		100% 	{ transform: scale(1) rotate(nth($menu-variable-font-rotation, $i)); opacity: 1; }
+	}
+}

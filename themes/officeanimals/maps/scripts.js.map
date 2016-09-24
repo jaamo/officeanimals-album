@@ -1,0 +1,1 @@
+{"version":3,"sources":["script.js"],"names":["$","document","ready","fullpage"],"mappings":"AAAAA,EAAEC,UAAUC,MAAM,WACdF,EAAE,aAAaG","file":"scripts.js","sourcesContent":["$(document).ready(function() {\n    $('#fullpage').fullpage();\n});\n"],"sourceRoot":"/source/"}

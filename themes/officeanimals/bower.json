@@ -1,0 +1,19 @@
+{
+  "name": "data",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "fullpage.js": "fullpage#^2.8.6",
+    "pure": "purecss#^0.6.0"
+  }
+}

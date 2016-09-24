@@ -1,0 +1,102 @@
+$icon-hamburger-delay: 0.1;
+$icon-hamburger-color: #000000;
+$icon-cross-color: #ffffff;
+
+@include keyframes(hamburger-mask-out) {
+	0% {
+		width: 400px;
+	}
+	100% {
+		width: 0;
+	}
+}
+@include keyframes(hamburger-mask-in) {
+	0% {
+		width: 0px;
+	}
+	100% {
+		width: 400px;
+	}
+}
+
+@include keyframes(cross-mask-out) {
+	0% {
+		width: 400px;
+	}
+	100% {
+		width: 0;
+	}
+}
+
+@include keyframes(cross-mask-in) {
+	0% {
+		width: 0;
+	}
+	100% {
+		width: 400px;
+	}
+}
+
+
+
+.icon-hamburger {
+
+	width: 40px;
+	height: 40px;
+    position: fixed;
+    right: 0.5rem;
+    top: 0.5rem;
+    z-index: 1000;
+
+	&__line-a, &__line-b, &__line-c {
+		fill: $icon-hamburger-color;
+	}
+
+    &__line-d, &__line-e {
+		fill: $icon-cross-color;
+	}
+
+
+	&--hamburger {
+
+		.icon-hamburger__mask-a__shape {
+			width: 0;
+			@include animation(#{$icon-hamburger-delay * 2}s, #{$icon-hamburger-delay}s, hamburger-mask-in, ease-in);
+		}
+		.icon-hamburger__mask-b__shape {
+			width: 0;
+			@include animation(#{$icon-hamburger-delay * 3}s, #{$icon-hamburger-delay}s, hamburger-mask-in, ease-in);
+		}
+		.icon-hamburger__mask-c__shape {
+			width: 0;
+			@include animation(#{$icon-hamburger-delay * 5}s, #{$icon-hamburger-delay}s, hamburger-mask-in, ease-in);
+		}
+		.icon-hamburger__mask-d__shape {
+			@include animation(0, #{$icon-hamburger-delay}s, cross-mask-out, ease-in);
+		}
+		.icon-hamburger__mask-e__shape {
+			@include animation(0, #{$icon-hamburger-delay}s, cross-mask-out, ease-in);
+		}
+
+	}
+
+	&--cross {
+
+		.icon-hamburger__mask-a__shape {
+			@include animation(0, #{$icon-hamburger-delay}s, hamburger-mask-out, ease-in);
+		}
+		.icon-hamburger__mask-b__shape {
+			@include animation(0, #{$icon-hamburger-delay}s, hamburger-mask-out, ease-in);
+		}
+		.icon-hamburger__mask-c__shape {
+			@include animation(0, #{$icon-hamburger-delay}s, hamburger-mask-out, ease-in);
+		}
+		.icon-hamburger__mask-d__shape {
+			@include animation(#{$icon-hamburger-delay * 2}s, #{$icon-hamburger-delay}s, cross-mask-in, ease-in);
+		}
+		.icon-hamburger__mask-e__shape {
+			@include animation(#{$icon-hamburger-delay * 4}s, #{$icon-hamburger-delay}s, cross-mask-in, ease-in);
+		}
+
+	}
+}
