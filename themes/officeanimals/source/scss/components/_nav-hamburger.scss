@@ -47,6 +47,7 @@ $icon-cross-color: #ffffff;
     right: 0.5rem;
     top: 0.5rem;
     z-index: 1000;
+	cursor: pointer;
 
 	&__line-a, &__line-b, &__line-c {
 		fill: $icon-hamburger-color;

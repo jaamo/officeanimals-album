@@ -14,8 +14,14 @@ Generate files:
 Load theme dependencies:
 ```docker run -it --rm -v $(pwd):/data onefastsnail/node-bower-gulp bower --allow-root install```
 
+Load theme dependencies:
+```docker run -it --rm -v $(pwd):/data onefastsnail/node-bower-gulp bower --allow-root install```
+
+Process theme assets
+```docker run -it --rm -v $(pwd):/data onefastsnail/node-bower-gulp sh -c 'gulp'```
+
 Run hexo server on port 4000:
 ```docker run --rm -it -p 4000:4000 -v ~/Sites/officeanimals-album/:/usr/share/nginx/html/ simplyintricate/hexo hexo server```
 
 Deploy to production:
-```docker run --rm -it -v ~/Sites/officeanimals-album/:/usr/share/nginx/html/ simplyintricate/hexo hexo deplou```
+```docker run --rm -it -v ~/Sites/officeanimals-album/:/usr/share/nginx/html/ simplyintricate/hexo hexo deploy```

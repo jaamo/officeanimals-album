@@ -1,0 +1,22 @@
+.section {
+	font-family: $font-paragraph;
+	&__comic {
+		img {
+			width: 100%;
+			max-height: 100%;
+		}
+	}
+	&__logo {
+		width: 50%;
+		margin-bottom: 2rem;
+	}
+	&--center {
+		text-align: center;
+	}
+	&__paragraph {
+		width: 70%;
+		margin: 0.5rem auto 1rem;
+		text-align: center;
+		font-size: 1.2rem;
+	}
+}
